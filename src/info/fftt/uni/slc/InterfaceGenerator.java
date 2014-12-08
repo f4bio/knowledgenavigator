@@ -4,8 +4,6 @@ import info.fftt.uni.slc.style.Style;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * Created by fftt on 04.12.14.
@@ -20,6 +18,8 @@ public class InterfaceGenerator {
 
     private KnowledgeNavigator knowledgeNavigator;
 
+    JTextField txtUsername, txtPassword, txtURL, txtDescription, txtTitle;
+
     public InterfaceGenerator(KnowledgeNavigator knowledgeNavigator, Style style) {
         this.knowledgeNavigator = knowledgeNavigator;
 
@@ -28,12 +28,32 @@ public class InterfaceGenerator {
 
     }
 
+    public String getUsername() {
+        return txtUsername.getText();
+    }
+
+    public String getPassword() {
+        return txtPassword.getText();
+    }
+
+    public String getURL() {
+        return txtURL.getText();
+    }
+
+    public String getDescription() {
+        return txtDescription.getText();
+    }
+
+    public String getTitle() {
+        return txtDescription.getText();
+    }
+
     public JFrame getLoginPage() {
         JFrame f = new JFrame("Login");
 
         JButton btnLogin = new JButton("Login");
-        JTextField txtUsername = new JTextField(20);
-        JTextField txtPassword = new JTextField(20);
+        txtUsername = new JTextField(20);
+        txtPassword = new JTextField(20);
 
         // Sets the behavior for when the window is closed
         f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -56,9 +76,9 @@ public class InterfaceGenerator {
         JFrame f = new JFrame("Create");
 
         JButton btnCreate = new JButton("Create");
-        JTextField txtURL = new JTextField(20);
-        JTextField txtDescription = new JTextField(20);
-        JTextField txtTitle = new JTextField(20);
+        txtURL = new JTextField(20);
+        txtDescription = new JTextField(20);
+        txtTitle = new JTextField(20);
 
         // Sets the behavior for when the window is closed
         f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

@@ -1,9 +1,8 @@
 package info.fftt.uni.slc;
 
+import info.fftt.uni.slc.gui.Create;
+import info.fftt.uni.slc.gui.Login;
 import info.fftt.uni.slc.style.Style;
-
-import javax.swing.*;
-import java.awt.*;
 
 /**
  * Created by fftt on 04.12.14.
@@ -18,7 +17,8 @@ public class InterfaceGenerator {
 
     private KnowledgeNavigator knowledgeNavigator;
 
-    JTextField txtUsername, txtPassword, txtURL, txtDescription, txtTitle;
+    Login dialogLogin;
+    Create dialogCreate;
 
     public InterfaceGenerator(KnowledgeNavigator knowledgeNavigator, Style style) {
         this.knowledgeNavigator = knowledgeNavigator;
@@ -29,73 +29,35 @@ public class InterfaceGenerator {
     }
 
     public String getUsername() {
-        return txtUsername.getText();
+        return dialogLogin.getUsername();
     }
 
     public String getPassword() {
-        return txtPassword.getText();
+        return new String(dialogLogin.getPassword());
     }
 
     public String getURL() {
-        return txtURL.getText();
+        return dialogCreate.getTextURL();
     }
 
     public String getDescription() {
-        return txtDescription.getText();
+        return dialogCreate.getTextDescription();
     }
 
     public String getTitle() {
-        return txtDescription.getText();
+        return dialogCreate.getTextTitle();
     }
 
-    public JFrame getLoginPage() {
-        JFrame f = new JFrame("Login");
+    public void showLoginPage() {
+        dialogLogin = new Login(this.knowledgeNavigator);
 
-        JButton btnLogin = new JButton("Login");
-        txtUsername = new JTextField(20);
-        txtPassword = new JTextField(20);
-
-        // Sets the behavior for when the window is closed
-        f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        // Add a layout manager so that the button is not placed on top of the label
-        f.setLayout(new FlowLayout());
-
-        btnLogin.setActionCommand(ACTION_COMMAND.LOGIN);
-        btnLogin.addActionListener(knowledgeNavigator);
-
-        f.add(new JLabel("Username"));
-        f.add(txtUsername);
-        f.add(new JLabel("Password"));
-        f.add(txtPassword);
-        f.add(btnLogin);
-
-        return f;
+        dialogLogin.pack();
+        dialogLogin.setVisible(true);
     }
 
-    public JFrame getCreatePage() {
-        JFrame f = new JFrame("Create");
-
-        JButton btnCreate = new JButton("Create");
-        txtURL = new JTextField(20);
-        txtDescription = new JTextField(20);
-        txtTitle = new JTextField(20);
-
-        // Sets the behavior for when the window is closed
-        f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        // Add a layout manager so that the button is not placed on top of the label
-        f.setLayout(new FlowLayout());
-
-        btnCreate.setActionCommand(ACTION_COMMAND.CREATE);
-        btnCreate.addActionListener(knowledgeNavigator);
-
-        f.add(new JLabel("URL"));
-        f.add(txtURL);
-        f.add(new JLabel("Description"));
-        f.add(txtDescription);
-        f.add(new JLabel("Title"));
-        f.add(txtTitle);
-        f.add(btnCreate);
-
-        return f;
+    public void showCreatePage() {
+        dialogCreate = new Create(this.knowledgeNavigator);
+        dialogCreate.pack();
+        dialogCreate.setVisible(true);
     }
 }

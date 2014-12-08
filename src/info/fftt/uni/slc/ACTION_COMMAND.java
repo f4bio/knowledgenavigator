@@ -7,4 +7,5 @@ public class ACTION_COMMAND {
 
     public static final String LOGIN = "login";
     public static final String CREATE = "create";
+    public static final String CANCEL = "cancel";
 }

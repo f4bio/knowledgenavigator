@@ -6,6 +6,10 @@ package info.fftt.uni.slc;
 public class LoginValidator {
 
     public static boolean isValidUser(String email, String password) {
-        return true;
+        if (email != null && password != null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

@@ -6,37 +6,34 @@ import info.fftt.uni.slc.KnowledgeNavigator;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class Create extends JDialog {
+public class LoginDialog extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
-    private JTextField textURL;
-    private JTextField textTitle;
-    private JTextField textDescription;
+    private JButton buttonCancel;
+    private JTextField textField1;
+    private JPasswordField passwordField1;
     private KnowledgeNavigator knowledgeNavigator;
 
-    public String getTextURL() {
-        return textURL.getText();
-    }
-
-    public String getTextTitle() {
-        return textTitle.getText();
-    }
-
-    public String getTextDescription() {
-        return textDescription.getText();
-    }
-
-    public Create(KnowledgeNavigator knowledgeNavigator) {
+    public LoginDialog(KnowledgeNavigator knowledgeNavigator) {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
 
         this.knowledgeNavigator = knowledgeNavigator;
 
-        buttonOK.setActionCommand(ACTION_COMMAND.CREATE);
-        buttonOK.addActionListener(knowledgeNavigator);
+        buttonOK.setActionCommand(ACTION_COMMAND.LOGIN);
+        buttonCancel.setActionCommand(ACTION_COMMAND.CANCEL);
 
-        setTitle("Create");
+        buttonOK.addActionListener(knowledgeNavigator);
+        buttonCancel.addActionListener(knowledgeNavigator);
+
+        setTitle("Login");
+
+        buttonCancel.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                onCancel();
+            }
+        });
 
 // call onCancel() when cross is clicked
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -57,5 +54,13 @@ public class Create extends JDialog {
     private void onCancel() {
 // add your code here if necessary
         dispose();
+    }
+
+    public String getUsername() {
+        return this.textField1.getText();
+    }
+
+    public char[] getPassword() {
+        return this.passwordField1.getPassword();
     }
 }

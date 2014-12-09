@@ -1,7 +1,7 @@
 package info.fftt.uni.slc;
 
-import info.fftt.uni.slc.gui.Create;
-import info.fftt.uni.slc.gui.Login;
+import info.fftt.uni.slc.gui.LoginDialog;
+import info.fftt.uni.slc.gui.MainDialog;
 import info.fftt.uni.slc.style.Style;
 
 /**
@@ -17,15 +17,14 @@ public class InterfaceGenerator {
 
     private KnowledgeNavigator knowledgeNavigator;
 
-    Login dialogLogin;
-    Create dialogCreate;
+    LoginDialog dialogLogin;
+    MainDialog dialogMenu;
 
     public InterfaceGenerator(KnowledgeNavigator knowledgeNavigator, Style style) {
         this.knowledgeNavigator = knowledgeNavigator;
 
         this.color = style.getColor();
         this.logo = style.getLogo();
-
     }
 
     public String getUsername() {
@@ -36,28 +35,25 @@ public class InterfaceGenerator {
         return new String(dialogLogin.getPassword());
     }
 
-    public String getURL() {
-        return dialogCreate.getTextURL();
+
+    public void hideAll() {
+        if (dialogLogin != null)
+            dialogLogin.dispose();
+        if (dialogMenu != null)
+            dialogMenu.dispose();
     }
 
-    public String getDescription() {
-        return dialogCreate.getTextDescription();
-    }
-
-    public String getTitle() {
-        return dialogCreate.getTextTitle();
-    }
-
-    public void showLoginPage() {
-        dialogLogin = new Login(this.knowledgeNavigator);
+    public void showLogin() {
+        dialogLogin = new LoginDialog(this.knowledgeNavigator);
 
         dialogLogin.pack();
         dialogLogin.setVisible(true);
     }
 
-    public void showCreatePage() {
-        dialogCreate = new Create(this.knowledgeNavigator);
-        dialogCreate.pack();
-        dialogCreate.setVisible(true);
+    public void showMenu() {
+        dialogMenu = new MainDialog(this.knowledgeNavigator);
+
+        dialogMenu.pack();
+        dialogMenu.setVisible(true);
     }
 }

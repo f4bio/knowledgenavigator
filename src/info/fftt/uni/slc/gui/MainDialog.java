@@ -11,21 +11,31 @@ public class MainDialog extends JDialog {
     private JButton buttonOK;
     private JButton buttonExit;
     private JTabbedPane tabbedPane1;
-    private JTextField textField1;
-    private JTextField textField2;
-    private JTextField textField3;
+    private JTextField textFieldTitle;
+    private JTextField textFieldDescription;
+    private JTextField textFieldURL;
     private JButton createButton;
+    private JList<String> list1;
+    private JButton refreshButton;
+    private JTable table1;
+    private JScrollPane scrollPane;
+
+    DefaultListModel<String> listModel;
 
     public MainDialog(KnowledgeNavigator knowledgeNavigator) {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
 
-
         buttonExit.setActionCommand(ACTION_COMMAND.EXIT);
         buttonExit.addActionListener(knowledgeNavigator);
 
-// call onCancel() when cross is clicked
+        refreshButton.setActionCommand(ACTION_COMMAND.REFRESH_LIST);
+        refreshButton.addActionListener(knowledgeNavigator);
+
+        createButton.setActionCommand(ACTION_COMMAND.CREATE);
+        createButton.addActionListener(knowledgeNavigator);
+
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
@@ -33,7 +43,6 @@ public class MainDialog extends JDialog {
             }
         });
 
-// call onCancel() on ESCAPE
         contentPane.registerKeyboardAction(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onCancel();
@@ -41,13 +50,37 @@ public class MainDialog extends JDialog {
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
-    private void onOK() {
-// add your code here
-        dispose();
+    public void addListItem(String item) {
+//        System.out.println("adding item: " + item);
+        listModel.addElement(item);
+    }
+
+    public void clearItemsList() {
+        listModel.clear();
     }
 
     private void onCancel() {
-// add your code here if necessary
         dispose();
+    }
+
+    private void createUIComponents() {
+        listModel = new DefaultListModel<String>();
+        list1 = new JList<String>(listModel);
+    }
+
+    public ListModel<String> getItemList() {
+        return listModel;
+    }
+
+    public String getURL() {
+        return this.textFieldURL.getText();
+    }
+
+    public String getTitle() {
+        return this.textFieldTitle.getText();
+    }
+
+    public String getDescription() {
+        return this.textFieldDescription.getText();
     }
 }

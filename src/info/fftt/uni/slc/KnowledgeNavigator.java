@@ -41,9 +41,27 @@ public class KnowledgeNavigator implements Runnable, ActionListener {
 
                 this.users.add(new User(username, password));
                 // Create the window
-                System.out.println("showing menu");
-                interfaceGenerator.showMenu();
+                System.out.println("showing main window");
+                interfaceGenerator.showMain();
             }
+        } else if (e.getActionCommand().equals(ACTION_COMMAND.REFRESH_LIST)) {
+            System.out.println("refreshing list");
+
+            interfaceGenerator.clearItemsList();
+            for (Item item : this.users.get(0).items) {
+                interfaceGenerator.addItemsList(String.format("%s (%s)", item.getTitle(), item.getUrl().toString()));
+            }
+
+        } else if (e.getActionCommand().equals(ACTION_COMMAND.CREATE)) {
+            System.out.println("creating item");
+
+            String url = interfaceGenerator.getURL();
+            String title = interfaceGenerator.getTitle();
+            String description = interfaceGenerator.getDescription();
+
+            Item item = new Item(url, title, description);
+            this.users.get(0).addItem(item);
+
         } else if (e.getActionCommand().equals(ACTION_COMMAND.EXIT)) {
             interfaceGenerator.hideAll();
             System.exit(0);

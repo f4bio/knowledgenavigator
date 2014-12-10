@@ -11,4 +11,5 @@ public class ACTION_COMMAND {
     public static final String MENU_LIST = "menu_list";
     public static final String MENU_CREATE = "menu_create";
     public static final String EXIT = "menu_exit";
+    public static final String REFRESH_LIST = "refresh_list";
 }

@@ -4,6 +4,8 @@ import info.fftt.uni.slc.gui.LoginDialog;
 import info.fftt.uni.slc.gui.MainDialog;
 import info.fftt.uni.slc.style.Style;
 
+import javax.swing.*;
+
 /**
  * Created by fftt on 04.12.14.
  */
@@ -18,7 +20,9 @@ public class InterfaceGenerator {
     private KnowledgeNavigator knowledgeNavigator;
 
     LoginDialog dialogLogin;
-    MainDialog dialogMenu;
+    MainDialog dialogMain;
+    private ListModel<String> itemsList;
+    private String URL;
 
     public InterfaceGenerator(KnowledgeNavigator knowledgeNavigator, Style style) {
         this.knowledgeNavigator = knowledgeNavigator;
@@ -35,12 +39,23 @@ public class InterfaceGenerator {
         return new String(dialogLogin.getPassword());
     }
 
+    public ListModel<String> getItemsList() {
+        return dialogMain.getItemList();
+    }
+
+    public void addItemsList(String text) {
+        dialogMain.addListItem(text);
+    }
+
+    public void clearItemsList() {
+        dialogMain.clearItemsList();
+    }
 
     public void hideAll() {
         if (dialogLogin != null)
             dialogLogin.dispose();
-        if (dialogMenu != null)
-            dialogMenu.dispose();
+        if (dialogMain != null)
+            dialogMain.dispose();
     }
 
     public void showLogin() {
@@ -50,10 +65,22 @@ public class InterfaceGenerator {
         dialogLogin.setVisible(true);
     }
 
-    public void showMenu() {
-        dialogMenu = new MainDialog(this.knowledgeNavigator);
+    public void showMain() {
+        dialogMain = new MainDialog(this.knowledgeNavigator);
 
-        dialogMenu.pack();
-        dialogMenu.setVisible(true);
+        dialogMain.pack();
+        dialogMain.setVisible(true);
+    }
+
+    public String getURL() {
+        return dialogMain.getURL();
+    }
+
+    public String getTitle() {
+        return dialogMain.getTitle();
+    }
+
+    public String getDescription() {
+        return dialogMain.getDescription();
     }
 }

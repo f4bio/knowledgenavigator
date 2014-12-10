@@ -10,25 +10,25 @@ import javax.swing.*;
  * Created by fftt on 04.12.14.
  */
 public class InterfaceGenerator {
-    private String color;
-    private String logo;
-
-    private String menu;
-    private String header;
-    private String content;
-
     private KnowledgeNavigator knowledgeNavigator;
 
     LoginDialog dialogLogin;
     MainDialog dialogMain;
-    private ListModel<String> itemsList;
-    private String URL;
 
     public InterfaceGenerator(KnowledgeNavigator knowledgeNavigator, Style style) {
         this.knowledgeNavigator = knowledgeNavigator;
 
-        this.color = style.getColor();
-        this.logo = style.getLogo();
+        try {
+            UIManager.setLookAndFeel(style.getLookAndFeel());
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
     }
 
     public String getUsername() {

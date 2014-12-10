@@ -5,16 +5,11 @@ package info.fftt.uni.slc.style;
  */
 public class UniBas implements Style {
 
-    private String color = "#00ff00";
-    private String logo = "./images/logos/unibas.png";
+    private final String lookAndFeel = "com.sun.java.swing.plaf.gtk.GTKLookAndFeel";
 
     @Override
-    public String getColor() {
-        return color;
+    public String getLookAndFeel() {
+        return lookAndFeel;
     }
 
-    @Override
-    public String getLogo() {
-        return logo;
-    }
 }

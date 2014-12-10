@@ -5,7 +5,6 @@ package info.fftt.uni.slc.style;
  */
 public interface Style {
 
-    public String getColor();
-    public String getLogo();
+    public String getLookAndFeel();
 
 }

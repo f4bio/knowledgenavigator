@@ -9,7 +9,6 @@ import java.awt.event.*;
 
 public class MainDialog extends JDialog {
     private JPanel contentPane;
-    private JButton buttonOK;
     private JButton buttonExit;
     private JTabbedPane tabbedPane1;
     private JTextField textFieldTitle;
@@ -26,7 +25,7 @@ public class MainDialog extends JDialog {
     public MainDialog(KnowledgeNavigator knowledgeNavigator) {
         setContentPane(contentPane);
         setModal(true);
-        getRootPane().setDefaultButton(buttonOK);
+        getRootPane().setDefaultButton(buttonExit);
 
         buttonExit.setActionCommand(ACTION_COMMAND.EXIT);
         buttonExit.addActionListener(knowledgeNavigator);

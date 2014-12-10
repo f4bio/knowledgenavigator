@@ -1,7 +1,8 @@
 package info.fftt.uni.slc.gui;
 
-import info.fftt.uni.slc.ACTION_COMMAND;
 import info.fftt.uni.slc.KnowledgeNavigator;
+import info.fftt.uni.slc.constants.ACTION_COMMAND;
+import info.fftt.uni.slc.constants.TITLE;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -27,7 +28,7 @@ public class LoginDialog extends JDialog {
         buttonOK.addActionListener(knowledgeNavigator);
         buttonCancel.addActionListener(knowledgeNavigator);
 
-        setTitle("Login");
+        setTitle(TITLE.LOGIN);
 
         buttonCancel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

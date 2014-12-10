@@ -7,6 +7,7 @@ import java.util.Date;
 
 /**
  * Created by fftt on 04.12.14.
+ *
  */
 public class Item {
     private ArrayList<Keyword> keywords;
@@ -54,5 +55,4 @@ public class Item {
     public String getDescription() {
         return description;
     }
-
 }

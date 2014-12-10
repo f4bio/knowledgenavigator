@@ -1,5 +1,6 @@
 package info.fftt.uni.slc;
 
+import info.fftt.uni.slc.constants.ACTION_COMMAND;
 import info.fftt.uni.slc.style.Style;
 import info.fftt.uni.slc.style.UniBas;
 

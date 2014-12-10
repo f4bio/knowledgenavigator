@@ -1,7 +1,8 @@
 package info.fftt.uni.slc.gui;
 
-import info.fftt.uni.slc.ACTION_COMMAND;
 import info.fftt.uni.slc.KnowledgeNavigator;
+import info.fftt.uni.slc.constants.ACTION_COMMAND;
+import info.fftt.uni.slc.constants.TITLE;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -48,6 +49,8 @@ public class MainDialog extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+
+        setTitle(TITLE.MAIN);
     }
 
     public void addListItem(String item) {

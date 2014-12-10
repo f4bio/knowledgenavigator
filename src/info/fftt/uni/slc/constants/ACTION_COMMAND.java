@@ -1,4 +1,4 @@
-package info.fftt.uni.slc;
+package info.fftt.uni.slc.constants;
 
 /**
  * Created by fftt on 08.12.14.
